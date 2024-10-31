@@ -426,6 +426,12 @@ class Tapper {
             );
             if (_.size(filtered_quests) > 0) {
               for (const quest of filtered_quests) {
+                if (
+                  !profile_data?.data?.userData?.wallet &&
+                  quest?.code?.toLowerCase() === "wallet"
+                ) {
+                  continue;
+                }
                 const sleep_quest = _.random(
                   settings.DELAY_BETWEEN_QUEST[0],
                   settings.DELAY_BETWEEN_QUEST[1]
